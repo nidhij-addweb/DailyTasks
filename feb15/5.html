@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>JavaScript program that accept two integers and display the larger.
+        </title>
+    </head>
+    <body>
+        <input type="text" name="num1" id="num1" placeholder="enter num input1">
+        <br><br>
+        <input type="text" name="num2" id="num2" placeholder="enter num input2">
+        <br><br>
+        <input type="button" value="check" onclick="checknum()">
+        <br>
+        <b id="output"></b>
+        <script>
+            function checknum(){
+                var num1=parseInt(document.getElementById("num1").value);
+                var num2=parseInt(document.getElementById("num2").value);
+                if(num1>num2){
+                    document.getElementById("output").innerHTML="num 1 is greater than num 2";
+                }else{
+                    document.getElementById("output").innerHTML="num 2 is greater than num 1";
+                }
+                
+            }
+        </script>
+    </body>
+</html>

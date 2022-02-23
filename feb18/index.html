@@ -1,0 +1,39 @@
+<html>
+    <body>
+        <p id="para">
+            
+        
+        </p>
+        <h1 class="heading"></h1>
+        <span></span>
+       
+        <script>
+            var user="nidhi jain";
+            var greet="hello"+user;
+            console.log(greet);
+            // template string
+            var greetuser=`${user}`;
+            console.log(greetuser);
+            // ternary ope
+            greet==greetuser? console.log("both are same"):console.log("different");
+            // objects in js
+            const userinfo={
+                name:"nidhi",
+                location:"dehgam",
+                fullInfo:function(){
+                    return this.name + " " + this.location ;
+                }
+            }
+            console.log(userinfo.location);
+            console.log(userinfo.fullInfo())
+            // dom
+            document.getElementById("para").innerHTML="hello from id";
+            // const html = document.getElementsByClassName('heading');
+            // console.log(html);
+            // document.querySelector("span").innerHTML = "Span"
+            document.getElementsByClassName('heading')[0].innerHTML="hello from heading";
+
+            document.getElementsByTagName("span")[0].innerHTML="hello from span";
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <h4>to read a number and check whether its Armstrong or not.(using while loop)((Sum
+            of xQube)=x. like153)</h4>
+            <input type="text" name="" id="num">
+            <br><br>
+            <input type="button" value="get armstrong num" onclick="getarmstrong()">
+
+            <script>
+                function getarmstrong() {
+                    var num1=parseInt(document.getElementById("num").value);
+                    temp=num1;
+                    var remainder;
+                    var newnum=0;
+                    while(!temp==0){
+                        remainder=temp%10;
+                        newnum=newnum+(remainder*remainder*remainder);
+                        temp=Math.floor(temp/10);
+                        if(newnum==num1){
+                            document.write("armstrong number")
+                        }
+                            else if(!newnum===num1){
+                                document.write("not armstrong numbers")
+
+                            }
+                        
+                    }
+                }
+            </script>
+    </body>
+</html>

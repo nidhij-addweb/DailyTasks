@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>number is positive,negative or zero</title>
+    </head>
+    <body>
+        <h3>To check number is positive or not</h3>
+        
+        <input type="text" name="num" id="num" placeholder="enter number" required>
+        <br><br>
+        <input type="button" value="check number"name="btn" id="btn" onclick="checkNum()"><br><br>
+        <b id="output"></b>
+
+        <script>
+            function checkNum(){
+                var numValue=parseInt(document.getElementById("num").value);
+                if(numValue==0){
+                    document.getElementById("output").innerHTML="number is zero";
+                }else if(numValue>0){
+                    document.getElementById("output").innerHTML="number is positive " + numValue;
+                }else if(numValue<0)
+                document.getElementById("output").innerHTML="number is negative " + numValue;
+
+            }
+        </script>
+    </body>
+</html>
