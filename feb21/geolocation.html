@@ -15,7 +15,7 @@
 
 
 
-   function getLocation() {
+   function getLocation(){
    var geolocation = navigator.geolocation;
    geolocation.getCurrentPosition(showLocation, errorHandler);
    
@@ -24,8 +24,8 @@
    function showLocation(position){
        var latitude=position.coords.latitude;
        var longitude=position.coords.longitude;
-       console.log("latitude :",latitude);
-       console.log("longitude :" ,longitude)
+       console.log("latitude : ",latitude);
+       console.log("longitude : " ,longitude)
    }
 
    function errorHandler( err ) {
