@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" >
+    <h2>html5 form attributes</h2>
+    <input type="text" name="user-name" id="user-name" placeholder="enter username" autofocus autocomplete="off" required>
+    <label for="password">
+        <input type="password" pattern="[0-9][A-Z]{3}"title="Single digit followed by three uppercase letters.">
+    </label>
+    <br><br>
+    <label>Your favorite hobby:
+        <datalist id="hobbies">
+            <select name="hobbies" id="">
+          <option value="reading">reading</option>
+          <option value="learning">learning</option>
+          <option value="coding">coding</option>
+          </select>
+        
+        </datalist>
+        If other, please specify:
+          <input type="text" name="hobby" list="hobbies">
+        </label>
+        <br><br>
+        <label for="upload">upload files :
+            <input type="file" multiple name="upload">
+        </label>
+    <br><br>
+
+      <span>multiline text-fields</span>
+      <textarea name="mult" id="" cols="30" rows="10"></textarea>
+      <br><br>
+      <input type="file" name="file" id="file" accept="image/png">
+      <br><br>
+      <input type="submit" value="submit">
+      <br><br>
+      <input type="reset" value="reset">
+
+</body>
+</html>
