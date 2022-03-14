@@ -9,7 +9,7 @@
 <body>
   
     <form method="POST">
-    <h3>Program to compute the multiplication of 2 Matrices.</h3>
+    <h3>Program to print a matrix in its transpose form.</h3>
     <h4>Enter n for nxn  :</h4> 
         <br>
     <b>Matrix :</b>
@@ -29,7 +29,7 @@
 <?php
 
 if(isset($_POST['submit'])){
-    echo"<h3>Program to compute the multiplication of 2 Matrices.</h3>";
+    echo"<h3>Program to print a matrix in its transpose form.</h3>";
     echo"<br>";
     $d1 = $_POST["1r"];
     $d2 = $_POST["1c"];

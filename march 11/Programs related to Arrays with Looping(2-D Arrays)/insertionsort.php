@@ -26,7 +26,7 @@
 <?php
 
 if(isset($_POST['submit'])){
-    echo"<h3>Program to find an element in the Array (Binary Searching).</h3>";
+    echo"<h3>Program to Sort an array through Insertion Sorting.</h3>";
     echo"<br>";
     $n1=$_POST['n1'];
     $n2=$_POST['n2'];
