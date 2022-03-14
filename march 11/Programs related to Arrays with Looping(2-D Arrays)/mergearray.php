@@ -61,46 +61,46 @@ if(isset($_POST['submit'])){
     $j = 0;
     $k = 0;
     $x = 0;
-$y = 0;
-$z = 0;
-for($i=0; $i<count($array1); $i++)
-{
-$val = $array1[$i];
-$j = $i-1;
-while($j>=0 && $array1[$j] > $val)
-{
-$array1[$j+1] = $array1[$j];
-$j--;
-}
-$array1[$j+1] = $val;
-}
-for($i=0; $i<count($array2); $i++)
-{
-$val = $array2[$i];
-$j = $i-1;
-while($j>=0 && $array2[$j] > $val)
-{
-$array2[$j+1] = $array2[$j];
-$j--;
-}
-$array2[$j+1] = $val;
-}
-while ($x < $n1 && $y < $n2)
-{
-if ($array1[$x] < $array2[$y])
-$array3[$z++] = $array1[$x++];
-else
-$array3[$z++] = $array2[$y++];
-}
+    $y = 0;
+    $z = 0;
+    for($i=0; $i<count($array1); $i++)
+    {
+    $val = $array1[$i];
+    $j = $i-1;
+    while($j>=0 && $array1[$j] > $val)
+    {
+    $array1[$j+1] = $array1[$j];
+    $j--;
+    }
+    $array1[$j+1] = $val;
+    }
+    for($i=0; $i<count($array2); $i++)
+    {
+    $val = $array2[$i];
+    $j = $i-1;
+    while($j>=0 && $array2[$j] > $val)
+    {
+    $array2[$j+1] = $array2[$j];
+    $j--;
+    }
+    $array2[$j+1] = $val;
+    }
+    while ($x < $n1 && $y < $n2)
+    {
+    if ($array1[$x] < $array2[$y])
+    $array3[$z++] = $array1[$x++];
+    else
+    $array3[$z++] = $array2[$y++];
+    }
 
-while ($x < $n1)
-$array3[$z++] = $array1[$x++];
+    while ($x < $n1)
+    $array3[$z++] = $array1[$x++];
 
-while ($y < $n2)
-$array3[$z++] = $array2[$y++];
+    while ($y < $n2)
+    $array3[$z++] = $array2[$y++];
 
-   echo "Array after merging : \n" ;
-   for ($i = 0; $i < $n1 + $n2; $i++)
-   echo $array3[$i] . " ";
-}
+    echo "Array after merging : \n" ;
+    for ($i = 0; $i < $n1 + $n2; $i++)
+    echo $array3[$i] . " ";
+    }
 ?>
