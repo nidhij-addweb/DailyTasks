@@ -34,6 +34,7 @@
 <?php
 
 if(isset($_POST['submit'])){
+    error_reporting(0);
     echo"<h3>Program to input two arrays and then put them into another (3rd array) after sorting.</h3>";
     echo"<br>";
     $n1=$_POST['n1'];
@@ -59,33 +60,47 @@ if(isset($_POST['submit'])){
     $i = 0;
     $j = 0;
     $k = 0;
-    $array3=array();
+    $x = 0;
+$y = 0;
+$z = 0;
+for($i=0; $i<count($array1); $i++)
+{
+$val = $array1[$i];
+$j = $i-1;
+while($j>=0 && $array1[$j] > $val)
+{
+$array1[$j+1] = $array1[$j];
+$j--;
+}
+$array1[$j+1] = $val;
+}
+for($i=0; $i<count($array2); $i++)
+{
+$val = $array2[$i];
+$j = $i-1;
+while($j>=0 && $array2[$j] > $val)
+{
+$array2[$j+1] = $array2[$j];
+$j--;
+}
+$array2[$j+1] = $val;
+}
+while ($x < $n1 && $y < $n2)
+{
+if ($array1[$x] < $array2[$y])
+$array3[$z++] = $array1[$x++];
+else
+$array3[$z++] = $array2[$y++];
+}
 
-    while ($i < $s1 && $j < $s2)
-    {
-        
-        if ($array1[$i] < $array2[$j])
-            $array3[$k++] = $array1[$i++];
-        else
-            $array3[$k++] = $array2[$j++];
-    }
- 
-    while ($i < $s1)
-        $array3[$k++] = $array1[$i++];
- 
-  
-    while ($j < $s2)
-        $array3[$k++] = $array2[$j++];
-   
+while ($x < $n1)
+$array3[$z++] = $array1[$x++];
 
- 
+while ($y < $n2)
+$array3[$z++] = $array2[$y++];
 
- 
-   $array3[$s1 + $s2] = array();
-
- 
    echo "Array after merging : \n" ;
-   for ($i = 0; $i < $s1 + $s2; $i++)
+   for ($i = 0; $i < $n1 + $n2; $i++)
    echo $array3[$i] . " ";
 }
 ?>
