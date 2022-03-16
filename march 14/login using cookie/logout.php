@@ -1,6 +1,6 @@
 <?php
 
-   if(isset($_COOKIE['username']))  {
+    if(isset($_COOKIE['username'])){
     
    
     echo"<h3>logged in successfully</h3>";
@@ -12,27 +12,31 @@
    
     echo"<br>";
     if(count($_COOKIE) > 0){
-        echo 'There are '.count($_COOKIE). ' cookies saved<br>';
+        echo "There are ".count($_COOKIE). " cookies saved<br>";
     } else {
-        echo 'There are no cookies saved<br>';
+        echo "There are no cookies saved";
+        echo"<br>";
     }
+    
     echo"<br>";
-   
     echo"<br>";
     echo '<form method="post">';
     echo'<input type="submit" name="logout" value="logout"></form>';
 
     if(isset($_POST['logout'])){
     
-        setcookie("username", "",time());
+        setcookie("username","",time());
         
-        setcookie("password", "",time());
+        setcookie("password","",time());
+        
         header('Location:login.php');
     }
-   }
-   if(!isset($_POST["username"])&&!isset($_POST["password"])){
-       header('location:login.php');
-   }   
-   ?>
+    }
+    
+    elseif(!isset($_COOKIE['username'])){
+       header('Location:login.php');
+    }   
+
+?>
 
 
