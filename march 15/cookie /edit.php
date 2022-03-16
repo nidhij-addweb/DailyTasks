@@ -36,5 +36,9 @@ if(isset($_POST['editcookie'])){
     }
    
 }
+elseif(empty($_COOKIE)){
+    header('location:cookie.php');
+        echo"create cookie first";
+}
 
 ?>

@@ -27,9 +27,9 @@ if(isset($_POST['name'])){
     echo"cookie deleted";
     
 }
-elseif(!isset($_COOKIE['name'])){
-    header('location:cookie.php');
+}
+elseif(empty($_COOKIE)){
+        header('location:cookie.php');
         echo"create cookie first";
-    }
 }
 ?>
