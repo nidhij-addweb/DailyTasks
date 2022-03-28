@@ -342,12 +342,12 @@ select COUNT(employee_no) from DEPARTMENT;
 
 27) DISPLAY THE TOTAL SALARY BEING PAID TO ALL EMPLOYEES
 
-select COUNT(employee_salary) from DEPARTMENT;
-+------------------------+
-| COUNT(employee_salary) |
-+------------------------+
-|                      5 |
-+------------------------+
+ select sum(employee_salary) from DEPARTMENT;
++----------------------+
+| sum(employee_salary) |
++----------------------+
+|                28500 |
++----------------------+
 
 
 28) DISPLAY THE MAXIMUM SALARY FROM EMP TABLE
