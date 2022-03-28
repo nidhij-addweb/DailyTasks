@@ -1,0 +1,434 @@
+1) ASCII()
+select ASCII('nidhi') ;
++----------------+
+| ASCII('nidhi') |
++----------------+
+|            110 |
++----------------+
+
+select ASCII('') ;
++-----------+
+| ASCII('') |
++-----------+
+|         0 |
++-----------+
+
+select ASCII('I') ;
++------------+
+| ASCII('I') |
++------------+
+|         73 |
++------------+
+
+2)BIN()
+select bin(12);
++---------+
+| bin(12) |
++---------+
+| 1100    |
++---------+
+
+3)BIT_LENGTH()
+select BIT_LENGTH('nidhi') ;
++---------------------+
+| BIT_LENGTH('nidhi') |
++---------------------+
+|                  40 |
++---------------------+
+
+4)CHAR()
+select CHAR(110,105);
++---------------+
+| CHAR(110,105) |
++---------------+
+| ni            |
++---------------+
+
+5)CHAR_LENGTH()
+select CHAR_LENGTH('nidhi');
++----------------------+
+| CHAR_LENGTH('nidhi') |
++----------------------+
+|                    5 |
++----------------------+
+
+6)CONCAT()
+select CONCAT('NIDHI','jain');
++------------------------+
+| CONCAT('NIDHI','jain') |
++------------------------+
+| NIDHIjain              |
++------------------------+
+
+7)CONCAT_WS()
+select CONCAT_WS('-','nidhi','jain');
++-------------------------------+
+| CONCAT_WS('-','nidhi','jain') |
++-------------------------------+
+| nidhi-jain                    |
++-------------------------------+
+
+8)ELT()
+select ELT(1,'nidhi','JAIN','nidhiJAIN');
++-----------------------------------+
+| ELT(1,'nidhi','JAIN','nidhiJAIN') |
++-----------------------------------+
+| nidhi                             |
++-----------------------------------+
+
+9)EXPORT_SET()
+select EXPORT_SET(5,'yes','no','|',6);
++--------------------------------+
+| EXPORT_SET(5,'yes','no','|',6) |
++--------------------------------+
+| yes|no|yes|no|no|no            |
++--------------------------------+
+
+10)FIELD()
+select FIELD("n","n","i","d","h","i");
++--------------------------------+
+| FIELD("n","n","i","d","h","i") |
++--------------------------------+
+|                              1 |
++--------------------------------+
+
+11)FIND_IN_SET()
+select FIND_IN_SET("i","n,i,d,h,i");
++------------------------------+
+| FIND_IN_SET("i","n,i,d,h,i") |
++------------------------------+
+|                            2 |
++------------------------------+
+
+12)FORMAT()
+select FORMAT(12000,0,'de_DE');
++-------------------------+
+| FORMAT(12000,0,'de_DE') |
++-------------------------+
+| 12.000                  |
++-------------------------+
+
+13)FROM_BASE64()
+select TO_BASE64('nidhi');
++--------------------+
+| TO_BASE64('nidhi') |
++--------------------+
+| bmlkaGk=           |
++--------------------+
+
+select FROM_BASE64('bmlkaGk=');
++-------------------------+
+| FROM_BASE64('bmlkaGk=') |
++-------------------------+
+| nidhi                   |
++-------------------------+
+
+14)HEX()
+ select HEX('nidhi');
++--------------+
+| HEX('nidhi') |
++--------------+
+| 6E69646869   |
++--------------+
+
+ select HEX(12);
++---------+
+| HEX(12) |
++---------+
+| C       |
++---------+
+
+15)INSERT()
+select INSERT('whatever',5,1,'so');
++-----------------------------+
+| INSERT('whatever',5,1,'so') |
++-----------------------------+
+| whatsover                   |
++-----------------------------+
+
+16)INSTR()
+select INSTR('whatsoever','so');
++--------------------------+
+| INSTR('whatsoever','so') |
++--------------------------+
+|                        5 |
++--------------------------+
+
+17)LEFT()
+select LEFT('nidhi',2);
++-----------------+
+| LEFT('nidhi',2) |
++-----------------+
+| ni              |
++-----------------+
+
+18)LENGTH()
+ select LENGTH('nidhi');
++-----------------+
+| LENGTH('nidhi') |
++-----------------+
+|               5 |
++-----------------+
+
+19)LIKE
+select employee_name from DEPARTMENT where employee_name like '_e%';
++---------------+
+| employee_name |
++---------------+
+| rekha         |
+| heena         |
+| veena         |
++---------------+
+
+20)LOCATE
+select LOCATE('intro','introvert');
++-----------------------------+
+| LOCATE('intro','introvert') |
++-----------------------------+
+|                           1 |
++-----------------------------+
+
+21)LOWER(), i.e., LCASE()
+ select LOWER('NIDHI');
++----------------+
+| LOWER('NIDHI') |
++----------------+
+| nidhi          |
++----------------+
+
+select LCASE('NIDHI');
++----------------+
+| LCASE('NIDHI') |
++----------------+
+| nidhi          |
++----------------+
+
+22)LPAD()
+select LPAD('jain',9,'nidhi');
++------------------------+
+| LPAD('jain',9,'nidhi') |
++------------------------+
+| nidhijain              |
++------------------------+
+
+23)LTRIM()
+select LTRIM('            nidhi');
++----------------------------+
+| LTRIM('            nidhi') |
++----------------------------+
+| nidhi                      |
++----------------------------+
+
+24)MAKE_SET()
+select MAKE_SET(1|2,'nidhi','JAIN','nj');
++-----------------------------------+
+| MAKE_SET(1|2,'nidhi','JAIN','nj') |
++-----------------------------------+
+| nidhi,JAIN                        |
++-----------------------------------+
+
+25)NOT LIKE
+select employee_name from DEPARTMENT WHERE employee_name NOT LIKE 'h%';
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| rekha         |
+| ramesh        |
+| ramesh        |
+| isha          |
+| veena         |
++---------------+
+
+26)NOT REGEXP
+select employee_job from DEPARTMENT WHERE employee_name NOT REGEXP '^r';
++--------------------------------+
+| employee_job                   |
++--------------------------------+
+| clerk                          |
+| analyst                        |
+| clerk                          |
+| business development executive |
++--------------------------------+
+
+27)OCT()
+select OCT(12);
++---------+
+| OCT(12) |
++---------+
+| 14      |
++---------+
+
+
+28)ORD()
+ select ORD('nidhi');
++--------------+
+| ORD('nidhi') |
++--------------+
+|          110 |
++--------------+
+
+29)QUOTE()
+select employee_job,QUOTE(employee_name) from DEPARTMENT ;
++--------------------------------+----------------------+
+| employee_job                   | QUOTE(employee_name) |
++--------------------------------+----------------------+
+| clerk                          | 'surekha'            |
+| salesman                       | 'rekha'              |
+| analyst                        | 'ramesh'             |
+| manager                        | 'ramesh'             |
+| analyst                        | 'heena'              |
+| clerk                          | 'isha'               |
+| business development executive | 'veena'              |
++--------------------------------+----------------------+
+
+30)REGEXP_INSTR()
+select REGEXP_INSTR('NIDHI JAIN','J');
++--------------------------------+
+| REGEXP_INSTR('NIDHI JAIN','J') |
++--------------------------------+
+|                              7 |
++--------------------------------+
+
+31)REGEXP_REPLACE
+select REGEXP_REPLACE('NIDHIJAIN','JAIN','jain');
++-------------------------------------------+
+| REGEXP_REPLACE('NIDHIJAIN','JAIN','jain') |
++-------------------------------------------+
+| NIDHIjain                                 |
++-------------------------------------------+
+
+32)REPEAT()
+select REPEAT('HELLO',4);
++----------------------+
+| REPEAT('HELLO',4)    |
++----------------------+
+| HELLOHELLOHELLOHELLO |
++----------------------+
+
+33)REPLACE()
+select REPLACE('nidhijain','nidhi','NIDHI');
++--------------------------------------+
+| REPLACE('nidhijain','nidhi','NIDHI') |
++--------------------------------------+
+| NIDHIjain                            |
++--------------------------------------+
+
+34)REVERSE()
+ select REVERSE('HELLO NIDHI');
++------------------------+
+| REVERSE('HELLO NIDHI') |
++------------------------+
+| IHDIN OLLEH            |
++------------------------+
+
+35)RIGHT()
+select RIGHT('HELLO NIDHI',6);
++------------------------+
+| RIGHT('HELLO NIDHI',6) |
++------------------------+
+|  NIDHI                 |
++------------------------+
+
+36)RPAD()
+select RPAD('HELLO NIDHI',14,'|');
++----------------------------+
+| RPAD('HELLO NIDHI',14,'|') |
++----------------------------+
+| HELLO NIDHI|||             |
++----------------------------+
+
+37)RTRIM()
+ select RTRIM('HELLO NIDHI          ');
++--------------------------------+
+| RTRIM('HELLO NIDHI          ') |
++--------------------------------+
+| HELLO NIDHI                    |
++--------------------------------+
+
+38)SOUNDEX()
+select SOUNDEX('HELLO NIDHI');
++------------------------+
+| SOUNDEX('HELLO NIDHI') |
++------------------------+
+| H453                   |
++------------------------+
+
+39)SPACE()
+select 'hello',SPACE(5),'NIDHI';
++-------+----------+-------+
+| hello | SPACE(5) | NIDHI |
++-------+----------+-------+
+| hello |          | NIDHI |
++-------+----------+-------+
+
+40)STRCMP()
+select STRCMP('helloo','hey');
++------------------------+
+| STRCMP('helloo','hey') |
++------------------------+
+|                     -1 |
++------------------------+
+
+41)SUBSTRING(), i.e., SUBSTR(), MID()
+ select  SUBSTR('helloothere',7);
++-------------------------+
+| SUBSTR('helloothere',7) |
++-------------------------+
+| there                   |
++-------------------------+
+
+42)SUBSTRING_INDEX()
+select SUBSTRING_INDEX('WWW.NIDHIJAIN.COM','.',-2);
++---------------------------------------------+
+| SUBSTRING_INDEX('WWW.NIDHIJAIN.COM','.',-2) |
++---------------------------------------------+
+| NIDHIJAIN.COM                               |
++---------------------------------------------+
+
+ select SUBSTRING_INDEX('WWW.NIDHIJAIN.COM','.',2);
++--------------------------------------------+
+| SUBSTRING_INDEX('WWW.NIDHIJAIN.COM','.',2) |
++--------------------------------------------+
+| WWW.NIDHIJAIN                              |
++--------------------------------------------+
+
+43)TRIM()
+select TRIM(LEADING 'w' FROM 'w.hellothere.com');
++-------------------------------------------+
+| TRIM(LEADING 'w' FROM 'w.hellothere.com') |
++-------------------------------------------+
+| .hellothere.com                           |
++-------------------------------------------+
+
+select TRIM(          'w.hellothere.com');
++------------------------------------+
+| TRIM(          'w.hellothere.com') |
++------------------------------------+
+| w.hellothere.com                   |
++------------------------------------+
+
+44)UPPER()
+ select UPPER('hello');
++----------------+
+| UPPER('hello') |
++----------------+
+| HELLO          |
++----------------+
+
+45)UNHEX()
+ select HEX('hello');
++--------------+
+| HEX('hello') |
++--------------+
+| 68656C6C6F   |
++--------------+
+
+select UNHEX('68656C6C6F');
++---------------------+
+| UNHEX('68656C6C6F') |
++---------------------+
+| hello               |
++---------------------+
+
+
