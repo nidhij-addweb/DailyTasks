@@ -1,0 +1,654 @@
+create database db_with_query;
+
+use db_with_query;
+
+create table DEPARTMENT(department_no bigint(10) NOT NULL,employee_no bigint(10) PRIMARY KEY NOT NULL,employee_name varchar(15) NOT NULL,employee_job varchar(30)NOT NULL,employee_salary bigint(20) NOT NULL,e_annualsalary bigint(20) NOT NULL,e_commision bigint(20) NOT NULL,e_joining_date date NOT NULL);
+
+desc DEPARTMENT;
+
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_no   | bigint(10)  | NO   |     | NULL    |       |
+| employee_no     | bigint(10)  | NO   | PRI | NULL    |       |
+| employee_name   | varchar(15) | NO   |     | NULL    |       |
+| employee_job    | varchar(30) | NO   |     | NULL    |       |
+| employee_salary | bigint(20)  | NO   |     | NULL    |       |
+| e_annualsalary  | bigint(20)  | NO   |     | NULL    |       |
+| e_commision     | bigint(20)  | NO   |     | NULL    |       |
+| e_joining_date  | date        | NO   |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+
+
+insert into DEPARTMENT values(10,201,'heena','team leader',5000,60000,7000,'2000-03-03');
+
+ insert into DEPARTMENT values(12,221,'veena','business development executive',3000,40000,6000,'2002-10-15');
+
+insert into DEPARTMENT values(20,121,'rekha','business development analyst',4000,55000,6000,'2001-10-17');
+
+insert into DEPARTMENT values(15,111,'surekha','administrative',2000,24000,3500,'2000-10-17');
+
+ insert into DEPARTMENT values(30,211,'isha','manager',3500,40000,5000,'2002-11-15');
+ 
+1) DISPLAY THE DEPT INFORMATION FROM DEPARTMENT TABLE.
+
+select * from DEPARTMENT;
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+| department_no | employee_no | employee_name | employee_job                   | employee_salary | e_annualsalary | e_commision | e_joining_date |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+|            15 |         111 | surekha       | clerk                          |            2000 |          24000 |        3500 | 2000-10-17     |
+|            20 |         121 | rekha         | salesman                       |            4000 |          55000 |        6000 | 1991-01-12     |
+|            40 |         137 | ramesh        | analyst                        |            5000 |          60000 |        7000 | 2003-07-12     |
+|            16 |         167 | ramesh        | manager                        |            6000 |          70000 |        7000 | 2003-07-12     |
+|            10 |         201 | heena         | analyst                        |            5000 |          60000 |        7000 | 1990-06-12     |
+|            30 |         211 | isha          | clerk                          |            3500 |          40000 |        5000 | 2002-11-15     |
+|            12 |         221 | veena         | business development executive |            3000 |          40000 |        6000 | 2002-10-15     |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+
+
+2) DISPLAY THE DETAILS OF ALL EMPLOYEES.
+
+select * from DEPARTMENT;
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+| department_no | employee_no | employee_name | employee_job                   | employee_salary | e_annualsalary | e_commision | e_joining_date |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+|            15 |         111 | surekha       | clerk                          |            2000 |          24000 |        3500 | 2000-10-17     |
+|            20 |         121 | rekha         | salesman                       |            4000 |          55000 |        6000 | 1991-01-12     |
+|            40 |         137 | ramesh        | analyst                        |            5000 |          60000 |        7000 | 2003-07-12     |
+|            16 |         167 | ramesh        | manager                        |            6000 |          70000 |        7000 | 2003-07-12     |
+|            10 |         201 | heena         | analyst                        |            5000 |          60000 |        7000 | 1990-06-12     |
+|            30 |         211 | isha          | clerk                          |            3500 |          40000 |        5000 | 2002-11-15     |
+|            12 |         221 | veena         | business development executive |            3000 |          40000 |        6000 | 2002-10-15     |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+
+
+3) DISPLAY THE NAME AND JOB FOR ALL EMPLOYEES.
+
+select employee_name,employee_job from DEPARTMENT;
++---------------+--------------------------------+
+| employee_name | employee_job                   |
++---------------+--------------------------------+
+| surekha       | administrative                 |
+| rekha         | business development analyst   |
+| heena         | team leader                    |
+| isha          | manager                        |
+| veena         | business development executive |
++---------------+--------------------------------+
+
+
+
+4) DISPLAY NAME AND SALARY FOR ALL EMPLOYEES
+
+select employee_name,employee_salary from DEPARTMENT;
++---------------+-----------------+
+| employee_name | employee_salary |
++---------------+-----------------+
+| surekha       |            2000 |
+| rekha         |            4000 |
+| heena         |            5000 |
+| isha          |            3500 |
+| veena         |            3000 |
++---------------+-----------------+
+
+
+5) DISPLAY EMPLOYEE NUMBER AND TOTAL SALARY FOR EACH EMPLOYEE
+
+select employee_name,e_annualsalary from DEPARTMENT;
++---------------+----------------+
+| employee_name | e_annualsalary |
++---------------+----------------+
+| surekha       |          24000 |
+| rekha         |          55000 |
+| heena         |          60000 |
+| isha          |          40000 |
+| veena         |          40000 |
++---------------+----------------+
+
+
+6) DISPLAY EMPLOYEE NAME AND ANNUAL SALARY FOR ALL EMPLOYEES.
+
+select employee_name,e_annualsalary from DEPARTMENT;
++---------------+----------------+
+| employee_name | e_annualsalary |
++---------------+----------------+
+| surekha       |          24000 |
+| rekha         |          55000 |
+| heena         |          60000 |
+| isha          |          40000 |
+| veena         |          40000 |
++---------------+----------------+
+
+
+7) DISPLAY THE NAMES OF ALL EMPLOYEES WHO ARE WORKING IN DEPARTMENT NUMBER 10
+
+select employee_name from DEPARTMENT where department_no=10;
++---------------+
+| employee_name |
++---------------+
+| heena         |
++---------------+
+
+
+8) DISPLAY THE NAMES OF ALL EMPLOYEES WORKING AS CLERKS AND DRAWING A SALARYMORE THAN 3000.
+
+ update DEPARTMENT SET employee_job='clerk' where employee_no=111;
+
+update DEPARTMENT SET employee_job='clerk' where employee_name='isha';
+
+
+ select employee_name from DEPARTMENT where employee_job='clerk' AND employee_salary>3000;
++---------------+
+| employee_name |
++---------------+
+| isha          |
++---------------+
+
+9) DISPLAY EMPLOYEE NUMBER AND NAMES FOR EMPLOYEES WHO EARN COMMISSION.
+
+select employee_no, employee_name from DEPARTMENT where e_commision IS NOT NULL;
++-------------+---------------+
+| employee_no | employee_name |
++-------------+---------------+
+|         111 | surekha       |
+|         121 | rekha         |
+|         201 | heena         |
+|         211 | isha          |
+|         221 | veena         |
++-------------+---------------+
+
+10) DISPLAY NAMES OF EMPLOYEES WHO DO NOT EARN ANY COMMISSION
+
+select employee_no, employee_name from DEPARTMENT where e_commision IS NULL;
+Empty set (0.001 sec)
+
+11) DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING AS CLERK, SALESMAN OR ANALYSTAND DRAWING A SALARY MORE THAN 3000
+
+ select employee_no, employee_name from DEPARTMENT where employee_job in ('clerk','analyst','salesman') AND  employee_salary>3000 ;
++-------------+---------------+
+| employee_no | employee_name |
++-------------+---------------+
+|         121 | rekha         |
+|         201 | heena         |
+|         211 | isha          |
++-------------+---------------+
+
+
+
+13) DISPLAY THE LIST OF EMPLOYEES WHO HAVE JOINED THE COMPANY BEFORE 30 TH JUNE 90OR AFTER 31 ST DEC 90
+
+update DEPARTMENT SET e_joining_date='1990-06-12' where employee_no=201;
+
+update DEPARTMENT SET e_joining_date='1991-01-12' where employee_no=121;
+
+select employee_name from DEPARTMENT where e_joining_date>'1990-06-30' OR e_joining_date>'1990-12-31' ;
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| rekha         |
+| isha          |
+| veena         |
++---------------+
+
+
+14) DISPLAY CURRENT DATE
+
+ SELECT CURRENT_DATE;
++--------------+
+| CURRENT_DATE |
++--------------+
+| 2022-03-25   |
++--------------+
+
+
+15) DISPLAY THE LIST OF USERS IN YOUR DATABASE (USING LOG TABLE)
+
+Select user from mysql.user;  
++------+
+| user |
++------+
+| root |
+| root |
+|      |
+| pma  |
+| root |
++------+
+
+
+16) DISPLAY THE NAMES OF ALL TABLES FROM THE CURRENT USER
+
+show tables;
++-------------------------+
+| Tables_in_db_with_query |
++-------------------------+
+| DEPARTMENT              |
++-------------------------+
+
+
+17) DISPLAY THE NAME OF THE CURRENT USER.
+
+Select current_user();  
++----------------+
+| current_user() |
++----------------+
+| root@localhost |
++----------------+
+
+18) DISPLAY THE NAMES OF EMPLOYEES WORKING IN DEPARTMENT NUMBER 10 OR 20 OR 40 OR EMPLOYEES WORKING AS CLERKS, SALESMAN OR ANALYST.
+
+insert into DEPARTMENT values(16,167,'ramesh','manager',6000,70000,7000,'2003-07-12');
+
+insert into DEPARTMENT values(40,137,'ramesh','analyst',5000,60000,7000,'2003-07-12');
+
+select employee_name from DEPARTMENT where department_no in (10,20,40) or employee_job in ('clerk','salesman','analyst') ;
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| rekha         |
+| ramesh        |
+| heena         |
+| isha          |
++---------------+
+
+
+19) DISPLAY THE NAMES OF EMPLOYEES WHOSE NAME STARTS WITH ALPHABET S.
+
+select employee_name from DEPARTMENT where employee_name LIKE 'S%';
++---------------+
+| employee_name |
++---------------+
+| surekha       |
++---------------+
+
+
+20) DISPLAY EMPLOYEE NAMES FOR EMPLOYEES WHOSE NAME ENDS WITH ALPHABET.
+
+select employee_name from DEPARTMENT where employee_name LIKE '%a';
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| rekha         |
+| heena         |
+| isha          |
+| veena         |
++---------------+
+
+
+21) DISPLAY THE NAMES OF EMPLOYEES WHOSE NAMES HAVE SECOND ALPHABET A IN THEIR NAMES.
+
+select employee_name from DEPARTMENT where employee_name LIKE '_a%';
+Empty set (0.001 sec)
+
+22) DISPLAY THE NAMES OF EMPLOYEES WHOSE NAME IS EXACTLY FIVE CHARACTERS IN LENGTH
+
+select employee_name from DEPARTMENT where length(employee_name)=5;
++---------------+
+| employee_name |
++---------------+
+| rekha         |
+| heena         |
+| veena         |
++---------------+
+
+23) DISPLAY THE NAMES OF EMPLOYEES WHO ARE NOT WORKING AS MANAGERS
+
+ select employee_name from DEPARTMENT where employee_job NOT IN ('manager');
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| rekha         |
+| heena         |
+| isha          |
+| veena         |
++---------------+
+
+
+24) DISPLAY THE NAMES OF EMPLOYEES WHO ARE NOT WORKING AS SALESMAN OR CLERK OR ANALYST
+
+select employee_name from DEPARTMENT where employee_job NOT IN ('salesman','clerk','employee');
++---------------+
+| employee_name |
++---------------+
+| heena         |
+| veena         |
++---------------+
+
+25) DISPLAY ALL ROWS FROM EMP TABLE. THE SYSTEM SHOULD WAIT AFTER EVERY SCREEN FULL OF INFORMATION
+
+ select * from DEPARTMENT;
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+| department_no | employee_no | employee_name | employee_job                   | employee_salary | e_annualsalary | e_commision | e_joining_date |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+|            15 |         111 | surekha       | clerk                          |            2000 |          24000 |        3500 | 2000-10-17     |
+|            20 |         121 | rekha         | salesman                       |            4000 |          55000 |        6000 | 1991-01-12     |
+|            10 |         201 | heena         | analyst                        |            5000 |          60000 |        7000 | 1990-06-12     |
+|            30 |         211 | isha          | clerk                          |            3500 |          40000 |        5000 | 2002-11-15     |
+|            12 |         221 | veena         | business development executive |            3000 |          40000 |        6000 | 2002-10-15     |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+
+
+26) DISPLAY THE TOTAL NUMBER OF EMPLOYEES WORKING IN THE COMPANY
+
+select COUNT(employee_no) from DEPARTMENT;
++--------------------+
+| COUNT(employee_no) |
++--------------------+
+|                  5 |
++--------------------+
+
+
+27) DISPLAY THE TOTAL SALARY BEING PAID TO ALL EMPLOYEES
+
+ select sum(employee_salary) from DEPARTMENT;
++----------------------+
+| sum(employee_salary) |
++----------------------+
+|                28500 |
++----------------------+
+
+
+28) DISPLAY THE MAXIMUM SALARY FROM EMP TABLE
+
+select MAX(employee_salary) from DEPARTMENT;
++----------------------+
+| MAX(employee_salary) |
++----------------------+
+|                 5000 |
++----------------------+
+
+
+
+29) DISPLAY THE MINIMUM SALARY FROM EMP TABLE
+
+ select MIN(employee_salary) from DEPARTMENT;
++----------------------+
+| MIN(employee_salary) |
++----------------------+
+|                 2000 |
++----------------------+
+
+30) DISPLAY THE AVERAGE SALARY FROM EMP TABLE
+
+select AVG(employee_salary) from DEPARTMENT;
++----------------------+
+| AVG(employee_salary) |
++----------------------+
+|            3500.0000 |
++----------------------+
+
+
+31) DISPLAY THE MAXIMUM SALARY BEING PAID TO CLERK
+
+ select MAX(employee_salary) from DEPARTMENT where employee_job='clerk';
++----------------------+
+| MAX(employee_salary) |
++----------------------+
+|                 3500 |
++----------------------+
+
+32) DISPLAY THE MAXIMUM SALARY BEING PAID IN DEPT NO 20
+
+ select MAX(employee_salary) from DEPARTMENT where department_no=20;
++----------------------+
+| MAX(employee_salary) |
++----------------------+
+|                 4000 |
++----------------------+
+
+33) DISPLAY THE MIN SAL BEING PAID TO ANY SALESMAN
+
+ select MIN(employee_salary) from DEPARTMENT where employee_job='salesman';
++----------------------+
+| MIN(employee_salary) |
++----------------------+
+|                 4000 |
++----------------------+
+
+
+34) DISPLAY THE AVERAGE SALARY DRAWN BY MANAGERS
+
+ select AVG(employee_salary) from DEPARTMENT where employee_job='managers';
++----------------------+
+| AVG(employee_salary) |
++----------------------+
+|                 NULL |
++----------------------+
+
+
+35) DISPLAY THE TOTAL SALARY DRAWN BY ANALYST WORKING IN DEPT NO 40
+
+select SUM(employee_salary) from DEPARTMENT where employee_job='analyst' AND department_no=40;
+
++----------------------+
+| SUM(employee_salary) |
++----------------------+
+|                 5000 |
++----------------------+
+
+
+36) DISPLAY THE NAMES OF EMPLOYEES IN ORDER OF SALARY I.E. THE NAME OF THE EMPLOYEE EARNING LOWEST SALARY SHOULD APPEAR FIRST
+
+ select employee_name from DEPARTMENT ORDER BY employee_salary asc;
++---------------+
+| employee_name |
++---------------+
+| surekha       |
+| veena         |
+| isha          |
+| rekha         |
+| ramesh        |
+| heena         |
+| ramesh        |
++---------------+
+
+
+37) DISPLAY THE NAMES OF EMPLOYEES IN DESCENDING ORDER OF SALARY
+
+select employee_name from DEPARTMENT ORDER BY employee_salary desc;
++---------------+
+| employee_name |
++---------------+
+| ramesh        |
+| ramesh        |
+| heena         |
+| rekha         |
+| isha          |
+| veena         |
+| surekha       |
++---------------+
+
+
+38) DISPLAY THE DETAILS FROM EMP TABLE IN ORDER OF EMP NAME
+
+select *  from DEPARTMENT ORDER BY employee_name asc;
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+| department_no | employee_no | employee_name | employee_job                   | employee_salary | e_annualsalary | e_commision | e_joining_date |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+|            10 |         201 | heena         | analyst                        |            5000 |          60000 |        7000 | 1990-06-12     |
+|            30 |         211 | isha          | clerk                          |            3500 |          40000 |        5000 | 2002-11-15     |
+|            40 |         137 | ramesh        | analyst                        |            5000 |          60000 |        7000 | 2003-07-12     |
+|            16 |         167 | ramesh        | manager                        |            6000 |          70000 |        7000 | 2003-07-12     |
+|            20 |         121 | rekha         | salesman                       |            4000 |          55000 |        6000 | 1991-01-12     |
+|            15 |         111 | surekha       | clerk                          |            2000 |          24000 |        3500 | 2000-10-17     |
+|            12 |         221 | veena         | business development executive |            3000 |          40000 |        6000 | 2002-10-15     |
++---------------+-------------+---------------+--------------------------------+-----------------+----------------+-------------+----------------+
+
+
+
+39) DISPLAY EMPNO, ENAME, DEPTNO, AND SAL. SORT THE OUTPUT FIRST BASED ON NAMEAND WITHIN NAME BY DEPTNO AND WITHIN DEPTNO BY SAL
+
+select employee_no,employee_name,department_no,employee_salary from DEPARTMENT ORDER BY employee_name,department_no,employee_salary asc;
++-------------+---------------+---------------+-----------------+
+| employee_no | employee_name | department_no | employee_salary |
++-------------+---------------+---------------+-----------------+
+|         201 | heena         |            10 |            5000 |
+|         211 | isha          |            30 |            3500 |
+|         167 | ramesh        |            16 |            6000 |
+|         137 | ramesh        |            40 |            5000 |
+|         121 | rekha         |            20 |            4000 |
+|         111 | surekha       |            15 |            2000 |
+|         221 | veena         |            12 |            3000 |
++-------------+---------------+---------------+-----------------+
+
+
+40) DISPLAY THE NAME OF THE EMPLOYEE ALONG WITH THEIR ANNUAL SALARY (SAL * 12).THE NAME OF THE EMPLOYEE EARNING HIGHEST ANNUAL SALARY SHOULD APPEAR FIRST
+
+ select employee_name , employee_salary*12 as 'annual_salary' from DEPARTMENT ORDER BY annual_salary desc;
++---------------+---------------+
+| employee_name | annual_salary |
++---------------+---------------+
+| ramesh        |         72000 |
+| ramesh        |         60000 |
+| heena         |         60000 |
+| rekha         |         48000 |
+| isha          |         42000 |
+| veena         |         36000 |
+| surekha       |         24000 |
++---------------+---------------+
+
+
+41) DISPLAY NAME, SAL, HRA, PF, DA, TOTAL SAL FOR EACH EMPLOYEE. THE OUTPUT SHOULD BE IN THE ORDER OF TOTAL SAL, HRA 15% OF SAL, DA 10% OF SAL, PF 5% OF SAL TOTAL SALARY WILL BE (SAL*HRA*DA)-PF
+
+select employee_name,employee_salary,employee_salary*.15 as 'HRA',employee_salary*.10 as 'DA',employee_salary*.05 as 'PF',employee_salary*(employee_salary*.15)*(employee_salary*.10)-(employee_salary*.5) as 'TotalSalary' from DEPARTMENT  ORDER BY TotalSalary desc;
++---------------+-----------------+--------+--------+--------+-----------------+
+| employee_name | employee_salary | HRA    | DA     | PF     | TotalSalary     |
++---------------+-----------------+--------+--------+--------+-----------------+
+| ramesh        |            6000 | 900.00 | 600.00 | 300.00 | 3239997000.0000 |
+| ramesh        |            5000 | 750.00 | 500.00 | 250.00 | 1874997500.0000 |
+| heena         |            5000 | 750.00 | 500.00 | 250.00 | 1874997500.0000 |
+| rekha         |            4000 | 600.00 | 400.00 | 200.00 |  959998000.0000 |
+| isha          |            3500 | 525.00 | 350.00 | 175.00 |  643123250.0000 |
+| veena         |            3000 | 450.00 | 300.00 | 150.00 |  404998500.0000 |
+| surekha       |            2000 | 300.00 | 200.00 | 100.00 |  119999000.0000 |
++---------------+-----------------+--------+--------+--------+-----------------+
+
+42) DISPLAY DEPT NUMBERS AND TOTAL NUMBER OF EMPLOYEES WITHIN EACH GROUP
+
+ select department_no,COUNT(employee_no) from DEPARTMENT GROUP BY department_no;
++---------------+--------------------+
+| department_no | COUNT(employee_no) |
++---------------+--------------------+
+|            10 |                  1 |
+|            12 |                  1 |
+|            15 |                  1 |
+|            16 |                  1 |
+|            20 |                  1 |
+|            30 |                  1 |
+|            40 |                  1 |
++---------------+--------------------+
+
+43) DISPLAY THE VARIOUS JOBS AND TOTAL NUMBER OF EMPLOYEES WITH EACH JOB GROUP
+
+select employee_job,COUNT(employee_no) from DEPARTMENT GROUP BY employee_job;
++--------------------------------+--------------------+
+| employee_job                   | COUNT(employee_no) |
++--------------------------------+--------------------+
+| analyst                        |                  2 |
+| business development executive |                  1 |
+| clerk                          |                  2 |
+| manager                        |                  1 |
+| salesman                       |                  1 |
++--------------------------------+--------------------+
+
+44) DISPLAY DEPARTMENT NUMBERS AND TOTAL SALARY FOR EACH DEPARTMENT
+
+
+select department_no,sum(employee_salary) from DEPARTMENT GROUP BY department_no;
++---------------+----------------------+
+| department_no | sum(employee_salary) |
++---------------+----------------------+
+|            10 |                 5000 |
+|            12 |                 3000 |
+|            15 |                 2000 |
+|            16 |                 6000 |
+|            20 |                 4000 |
+|            30 |                 3500 |
+|            40 |                 5000 |
++---------------+----------------------+
+
+
+45) DISPLAY DEPARTMENT NUMBERS AND MAXIMUM SALARY FOR EACH DEPARTMENT
+
+ select department_no ,max(employee_salary) as max_salary from DEPARTMENT GROUP BY department_no;
++---------------+------------+
+| department_no | max_salary |
++---------------+------------+
+|            10 |       5000 |
+|            12 |       3000 |
+|            15 |       2000 |
+|            16 |       6000 |
+|            20 |       4000 |
+|            30 |       3500 |
+|            40 |       5000 |
++---------------+------------+
+
+
+46) DISPLAY THE VARIOUS JOBS AND TOTAL SALARY FOR EACH JOB
+
+select employee_job,sum(employee_salary) as 'total_salary' from DEPARTMENT GROUP BY employee_job;
++--------------------------------+--------------+
+| employee_job                   | total_salary |
++--------------------------------+--------------+
+| analyst                        |        10000 |
+| business development executive |         3000 |
+| clerk                          |         5500 |
+| manager                        |         6000 |
+| salesman                       |         4000 |
++--------------------------------+--------------+
+
+
+47) DISPLAY EACH JOB ALONG WITH MINIMUM SAL BEING PAID IN EACH JOB GROUP
+
+ select employee_job,min(employee_salary) as 'min_salary' from DEPARTMENT GROUP BY employee_job;
++--------------------------------+------------+
+| employee_job                   | min_salary |
++--------------------------------+------------+
+| analyst                        |       5000 |
+| business development executive |       3000 |
+| clerk                          |       2000 |
+| manager                        |       6000 |
+| salesman                       |       4000 |
++--------------------------------+------------+
+
+48) DISPLAY THE DEPARTMENT NUMBERS WITH MORE THAN THREE EMPLOYEES IN EACH DEPT
+
+select department_no,COUNT(employee_no)>3 as 'more_employee' from DEPARTMENT GROUP BY department_no;
++---------------+---------------+
+| department_no | more_employee |
++---------------+---------------+
+|            10 |             0 |
+|            12 |             0 |
+|            15 |             0 |
+|            16 |             0 |
+|            20 |             0 |
+|            30 |             0 |
+|            40 |             0 |
++---------------+---------------+
+
+49) DISPLAY THE VARIOUS JOBS ALONG WITH TOTAL SAL FOR EACH OF THE JOBS WHERE TOTAL SALIS GREATER TH
+
+ select employee_job,sum(employee_salary) from DEPARTMENT GROUP BY employee_job having sum(employee_salary)>40000;
+Empty set (0.001 sec)
+
+
+50) DISPLAY THE VARIOUS JOBS ALONG WITH TOTAL NUMBER OF EMPLOYEES IN EACH JOB. THE OUTPUT SHOULD CONTAIN ONLY THOSE JOBS WITH MORE THAN THREE EMPLOYEES
+
+select employee_job,count(employee_no) from DEPARTMENT GROUP BY employee_job HAVING COUNT(employee_no)>3 ;
+Empty set (0.001 sec)
+
+
+
+51) DISPLAY THE NAME OF EMP WHO EARNS HIGHEST SAL.
+
+select employee_name from DEPARTMENT HAVING max(employee_salary);
++---------------+
+| employee_name |
++---------------+
+| surekha       |
++---------------+
+
+
+ 
