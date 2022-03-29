@@ -1,0 +1,23 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>to read a number and calculate factorial</h1>
+        <input type="text" name="" id="num" placeholder="enter number"><br><br>
+        <input type="button" value="factorial" onclick="getFactorial()"><br><br>
+
+        <script>
+            function getFactorial(){
+                var numValue=parseInt(document.getElementById("num").value);
+                factorial=1;
+                for(i=1;i<=numValue;i++){
+                    factorial*=i;
+                    // console.log("Factorial of number is" +factorial);
+                }
+                console.log("Factorial of number is " +factorial);
+
+            }
+        </script>
+    </body>
+</html>

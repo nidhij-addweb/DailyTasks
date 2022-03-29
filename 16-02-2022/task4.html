@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <h4>JavaScript function that reverse a number</h4>
+         <input type="text" name="" id="num" placeholder="enter number"><br><br>
+         <input type="button" value="reverse" onclick="getReverse()">
+         <br>
+        <b id="output"></b>
+        <script>
+           function getReverse()
+           {
+           let numValue=document.getElementById("num").value;
+	       numValue = numValue + "";
+           console.log(numValue)
+	       revNum= numValue.split("").reverse().join("");
+           document.getElementById("output").innerHTML=revNum;
+           }
+        
+        </script>
+    </body>
+</html>

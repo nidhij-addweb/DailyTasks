@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        
+        <h3>
+             to read character and find out whether it is upper case latter, lower case latter, 
+            digit or special symbol.
+        </h3>
+        <input type="text" id="str" placeholder="enter">
+        <input type="button" value="check" onclick="checkStr()">
+        <script>
+            function checkStr(){
+                var charValue=document.getElementById("str").value;
+                var char = charValue.charCodeAt(0);
+                if(char>=65 && char<=90){
+                  document.write("uppercase");
+                }else if(char>=97 && char<=122){
+                    document.write("lowercase");
+                }else if(char>=48 && char<=57){
+                    document.write("Digit");
+                }else{
+                    document.write("Special Character");
+                }
+            }
+        </script>
+    </body>
+</html>
