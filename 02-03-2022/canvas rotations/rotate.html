@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Point of transform origin
+        ctx.arc(0, 0, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+
+        // Non-rotated rectangle
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(100, 0, 80, 20);
+
+        // Rotated rectangle
+        ctx.rotate(45 * Math.PI / 180);
+        ctx.fillStyle = 'red';
+        ctx.fillRect(100, 0, 80, 20);
+
+
+    </script>
+</body>
+</html>
