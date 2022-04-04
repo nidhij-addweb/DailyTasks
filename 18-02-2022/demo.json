@@ -1,0 +1,9 @@
+{
+    "cities":[
+        {"city":"Ahmedabad","state":"Gujarat"},
+        {"city":"Jaipur","state":"Rajasthan"},
+        {"city":"Neemuch","state":"Madhya-Pradesh"}
+
+    ]
+
+}

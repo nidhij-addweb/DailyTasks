@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+   
+
+
+    <script>
+         let text = "nidhi";
+         document.getElementById("demo").innerHTML = text.length;
+         let str = "html, css, js";
+
+         document.write(str.split(","));
+
+         let indexStr=str.indexOf("js");
+
+         console.log(indexStr);
+
+
+         let indexStr1=str.indexOf("s");
+
+         console.log(indexStr);
+
+
+         let indexStr2=str.lastIndexOf("s");
+
+         console.log(indexStr2);
+         document.getElementById("demo1").innerHTML = str.slice(7,13);
+         
+         document.getElementById("demo2").innerHTML = str.substring(7,9);
+         
+         document.getElementById("demo3").innerHTML = str.substr(3,5); 
+         let text2=text.toUpperCase();
+         console.log(text2);
+         let text3=text.concat(" ",str);
+         console.log(text3);
+         let char=text.charAt(4);
+         console.log(char);
+         let charCode=text.charCodeAt(4);
+         console.log(charCode);
+
+         let newText=str.replace("js","javascript");
+         console.log(newText);
+
+         let replaceText=str.replace(/s/g,"S");
+         console.log(replaceText);
+         let charStr=str[7];
+         console.log(charStr);
+
+         document.write("<br>")
+
+         let includeStr=str.includes("js");
+         document.write(includeStr);
+
+         let valueStr=str.valueOf();
+         console.log(valueStr);
+
+         let Strfromcode=String.fromCharCode(78,73,68,72,73);
+         console.log(Strfromcode);
+    </script>
+</body>
+</html>
