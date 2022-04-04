@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onpageshow="myfun()">
+    <h4>window event attributes</h4>
+
+    <h5>form events</h5>
+    <select name="" id="myselect" onchange="selectFun()">
+    <option value="html">html</option>
+    <option value="css">css</option>
+    <option value="js">js</option>
+    </select>
+    <p id="demo"></p>
+    <h6>
+        keyboard events
+    </h6>
+    <input type="text" onkeydown="tdown()">
+    <br><br>
+    <input type="text" id="name" placeholder="enter some text" onkeyup="textdown()">
+    <script>
+        function myfun() {
+            alert("welcome")
+        }
+        function selectFun(){
+            var x=document.getElementById("myselect").value;
+            document.getElementById("demo").innerHTML="you selected " + x;
+        }
+        function tdown(){
+            document.write("you pressed key")
+        }
+        function textdown(){
+            var y=document.getElementById("name");
+            y.value=y.value.toUpperCase();
+            
+        }
+       
+    </script>
+</body>
+</html>
