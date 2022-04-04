@@ -1,0 +1,56 @@
+FUNCTIONS
+
+DELIMITER &&
+CREATE FUNCTION Daily_Wages(wage decimal(10,2))
+    -> returns decimal(10,2)
+    -> DETERMINISTIC
+    -> BEGIN
+    ->      DECLARE daily_wage decimal(10,2);
+    ->      Set daily_wage=wage*8;
+    -> return(daily_Wage);
+    -> END&&
+DELIMITER ; 
+Select Daily_Wages(50);
++-----------------+
+| Daily_Wages(50) |
++-----------------+
+|          400.00 |
++-----------------+
+
+
+==================================================================================================
+
+
+CREATE FUNCTION PIZZA(p_price bigint)
+    -> RETURNS VARCHAR(10)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE PIZZA VARCHAR(10);
+    -> IF p_price>700 THEN
+    -> SET PIZZA='HIGH';
+    -> ELSEIF(p_price<=700 AND p_price>=600) THEN
+    -> SET PIZZA='medium';
+    -> END IF;
+    -> RETURN(PIZZA);
+    -> END &&
+
+DELIMITER ;
+
+SELECT p_id,p_toppings,PIZZA(p_price) from online_pizza_ordering_management_system_db order by p_price;
+
++------+---------------+----------------+
+| p_id | p_toppings    | PIZZA(p_price) |
++------+---------------+----------------+
+|  105 | cheese        | NULL           |
+|  104 | cheese        | NULL           |
+|  101 | chilli flakes | NULL           |
+|  106 | chilli flakes | NULL           |
+|  103 | red paprika   | NULL           |
+|  102 | red paprika   | NULL           |
+|  107 | chilli flakes | NULL           |
+|  108 | red paprika   | NULL           |
+|  109 | chilli flakes | medium         |
+|  110 | cheese        | HIGH           |
++------+---------------+----------------+
+
+

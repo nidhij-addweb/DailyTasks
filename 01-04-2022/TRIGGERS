@@ -1,0 +1,131 @@
+TRIGGERS
+
+1)BEFORE INSERT
+
+delimiter //
+
+CREATE TRIGGER agecheck BEFORE INSERT ON people FOR EACH ROW IF NEW.age<0
+    -> THEN SET new.age=0;
+    -> END IF;
+    -> //
+
+DELIMITER ;
+
+insert into people values(-10,'veena'),(20,'seeta');
+
+select * from people;
++------+-------+
+| age  | name  |
++------+-------+
+|    0 | veena |
+|   20 | seeta |
++------+-------+
+
+
+
+
+2)AFTER INSERT
+
+delimiter $$
+CREATE TRIGGER after_members_insert
+    -> AFTER INSERT
+    -> ON members FOR EACH ROW
+    -> BEGIN
+    ->      IF NEW.birthDate IS NULL THEN
+    ->      INSERT INTO reminders(memberID,message)
+    ->      VALUES(new.id,CONCAT('HI',NEW.name,',please update your date of birth'));
+    -> END IF;
+    -> END $$
+
+DELIMITER ;
+
+insert into members(name,email,birthDate) VALUES('nidhi','nidhi@gmail.com',NULL);
+
+
+select * from reminders;
++----+----------+------------------------------------------+
+| id | memberId | message                                  |
++----+----------+------------------------------------------+
+|  1 |        1 | HInidhi,please update your date of birth |
++----+----------+------------------------------------------+
+
+3)BEFORE UPDATE
+
+create trigger person_bu BEFORE UPDATE
+    -> ON person
+    -> FOR EACH ROW
+    -> IF NEW.age<18 THEN
+    -> SIGNAL SQLSTATE '50002' SET MESSAGE_TEXT='person must be older than 18';
+    -> END IF;//
+
+delimiter ;
+
+update person set age=17 where name='nidhi';
+ERROR 1644 (50002): person must be older than 18
+
+4)AFTER UPDATE
+
+create trigger person_au after update
+    -> on person
+    -> for each row
+    -> update average_age SET age=(select AVG(age)from person);//
+
+update person set age=22 where name='nidhi';
+select * from average_age;
+
+
+5)BEFORE DELETE
+
+delimiter //
+create trigger person_bd BEFORE DELETE
+    -> ON person
+    -> FOR EACH ROW
+    -> INSERT INTO person_archieve(name,age)
+    -> values(old.name,old.age);//
+
+delimiter ;
+delete from person where name='seeta';
+
+select * from person_archieve;
++-------+------+
+| name  | age  |
++-------+------+
+| seeta |   26 |
++-------+------+
+
+6)AFTER DELETE
+
+delimiter //
+create trigger person_ad AFTER DELETE
+    -> ON person
+    -> FOR EACH ROW
+    -> UPDATE average_age SET age=(select AVG(person.age)from person);//
+
+delimiter ;
+
+delete from person where name='veena';
+
+select * from average_age;
+
+============================================================================================================================================================================================================
+
+show all triggers
+
+SHOW triggers;
++----------------------+--------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger              | Event  | Table   | Statement                                                                                                                                                                        | Timing | Created                | sql_mode                                                                                  | Definer        | character_set_client | collation_connection | Database Collation |
++----------------------+--------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| after_members_insert | INSERT | members | BEGIN
+     IF NEW.birthDate IS NULL THEN
+     INSERT INTO reminders(memberID,message)
+     VALUES(new.id,CONCAT('HI',NEW.name,',please update your date of birth'));
+END IF;
+END | AFTER  | 2022-04-03 20:29:13.68 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | utf8mb4              | utf8mb4_general_ci   | utf8mb4_general_ci |
+| agecheck             | INSERT | people  | IF NEW.age<0
+THEN SET new.age=0;
+END IF                                                                                                                                          | BEFORE | 2022-04-03 19:30:13.69 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | utf8mb4              | utf8mb4_general_ci   | utf8mb4_general_ci |
+| person_bu            | UPDATE | person  | IF NEW.age<18 THEN SIGNAL SQLSTATE '50002' SET MESSAGE_TEXT='person must be older than 18'; END IF                                                                               | BEFORE | 2022-04-03 21:02:10.07 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | utf8mb4              | utf8mb4_general_ci   | utf8mb4_general_ci |
+| person_au            | UPDATE | person  | update average_age SET age=(select AVG(age)from person)                                                                                                                          | AFTER  | 2022-04-03 21:13:47.29 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | utf8mb4              | utf8mb4_general_ci   | utf8mb4_general_ci |
+| person_ad            | DELETE | person  | UPDATE average_age SET age=(select AVG(person.age)from person)                                                                                                                   | AFTER  | 2022-04-03 22:08:42.40 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | utf8mb4              | utf8mb4_general_ci   | utf8mb4_general_ci |
++----------------------+--------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+
